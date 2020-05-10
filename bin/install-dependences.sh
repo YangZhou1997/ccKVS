@@ -19,3 +19,7 @@ sudo make install
 cd ..
 
 rm -rf libatomic_ops-7.4.6*
+
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
+sudo apt-get update
+sudo apt-get install gcc-6 g++-6 -y
