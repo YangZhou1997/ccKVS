@@ -26,11 +26,12 @@
 /traces/*.txt
 /traces/system-traces/*.txt
 /traces/current-splited-traces/*.txt
+/traces/test/*.txt
 
 # ignore ide files
 /.idea/
 /cmake-build-debug/
 /src/.idea/
 
-log/
+**/*.log
 .vscode/

@@ -388,7 +388,7 @@ void trace_init(struct trace_command **cmds, int clt_gid) {
         }
 
         snprintf(path, sizeof(path), "%s%s%s%s%s%s%d%s", cwd,
-                 "/../../traces/current-splited-traces/s_",
+                 "/../../traces/test/s_",
                  machine_num, "_c_", local_client_id, "_a_", SKEW_EXPONENT_A, ".txt");
         //initialize the command array from the trace file
         // printf("Client: %d attempts to read the trace: %s\n", clt_gid, path);

@@ -38,7 +38,7 @@ if __name__ == "__main__":
 	print(f'syncing')
 	# blocking, as Cmds['sync'] is set to run in foreground
 	ret = blocking_run(Cmds['sync'])
-	# print(ret)
+	print(ret)
 
 	non_blocking_run(Cmds['run_local'].format(host=hosts[0]))
 
