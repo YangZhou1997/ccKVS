@@ -3,14 +3,14 @@
 ### Start of initialization ###
 is_RoCE=0
 executable="ccKVS-sc" # choose "ccKVS-sc" or "ccKVS-lin" according to the coherence protocol
-export MEMCACHED_IP="129.215.165.8" #Node having memcached for to initialize RDMA QPs connections/handlers
+export MEMCACHED_IP="10.0.0.1" #Node having memcached for to initialize RDMA QPs connections/handlers
 export MLX5_SINGLE_THREADED=1
 export MLX5_SCATTER_TO_CQE=1
 
 # Setting up a unique machine id via a list of all ip addresses
 machine_id=-1
-allIPs=(129.215.165.8 129.215.165.7 129.215.165.9 129.215.165.6 129.215.165.5 129.215.165.3 129.215.165.4 129.215.165.2 129.215.165.1)
-localIP=$(ip addr | grep 'state UP' -A2 | sed -n 3p | awk '{print $2}' | cut -f1  -d'/')
+allIPs=(20.0.0.1 20.0.0.2 20.0.0.3)
+localIP=$(ip addr | grep 'ib0' -A2 | sed -n 3p | awk '{print $2}' | cut -f1  -d'/')
 for i in "${!allIPs[@]}"; do
 	if [  "${allIPs[i]}" ==  "$localIP" ]; then
 		machine_id=$i
