@@ -405,7 +405,7 @@ void dump_stats_2_file(struct stats* st){
     char filename[128];
     FILE *fp;
     double total_MIOPS;
-    char* path = "../../results/scattered-results/";
+    char* path = "../../results/test/";
     const char * exectype[] = {
             "BS", //baseline
             "SC", //Sequential Consistency

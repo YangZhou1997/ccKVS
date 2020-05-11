@@ -9,7 +9,7 @@ export MLX5_SCATTER_TO_CQE=1
 
 # Setting up a unique machine id via a list of all ip addresses
 machine_id=-1
-allIPs=(20.0.0.1 20.0.0.2 20.0.0.3)
+allIPs=(20.0.0.1 20.0.0.2 20.0.0.3 20.0.0.4)
 localIP=$(ip addr | grep 'ib0' -A2 | sed -n 3p | awk '{print $2}' | cut -f1  -d'/')
 for i in "${!allIPs[@]}"; do
 	if [  "${allIPs[i]}" ==  "$localIP" ]; then
@@ -55,7 +55,7 @@ shm-rm.sh 1>/dev/null 2>/dev/null
 
 blue "Reset server QP registry"
 sudo killall memcached
-sudo killall ccKVS-sc
+sudo killall ${executable}
 memcached -l 0.0.0.0 1>/dev/null 2>/dev/null &
 sleep 1
 

@@ -21,7 +21,7 @@
 
 #define WORKERS_PER_MACHINE 10
 #define CLIENTS_PER_MACHINE 10
-#define MACHINE_NUM 3
+#define MACHINE_NUM 4
 
 #define CACHE_SOCKET (WORKERS_PER_MACHINE < 8 ? 0 : 1 )// socket where the cache is bind
 

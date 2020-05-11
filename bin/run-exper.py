@@ -10,9 +10,9 @@ hosts = list(map(lambda x: f'apt{x}.apt.emulab.net', [137, 141, 147]))
 
 Cmds = {
 	'sync': 'cd ~/ccKVS/bin && ./copy-ccKVS-executables.sh',
-	'run_local': '(cd ~/ccKVS/src/ccKVS && ./run-ccKVS.sh) &> log/{host}.log',
+	'run_local': 'cd ~/ccKVS/src/ccKVS && unbuffer ./run-ccKVS.sh &> log/{host}.log',
 	# &> just does not work
-	'run_remote': 'ssh -o StrictHostKeyChecking=no {user}@{host} "cd ~/ccKVS/src/ccKVS && ./run-ccKVS.sh" > log/{host}.log 2> /dev/null',
+	'run_remote': 'ssh -o StrictHostKeyChecking=no {user}@{host} "cd ~/ccKVS/src/ccKVS && unbuffer ./run-ccKVS.sh" > log/{host}.log 2> /dev/null',
     'kill': 'ssh -o StrictHostKeyChecking=no {user}@{host} "sudo pkill ccKVS"',
 }
 
@@ -25,7 +25,7 @@ def signal_handler(sig, frame):
 
 # non-blocking or blocking actually depends on whether cmd is bg or fg
 def blocking_run(cmd):
-	ret = os.popen(cmd).read()
+    ret = subprocess.check_output(['/bin/bash', '-c', cmd])	
 	return ret
 
 # always non-blocking, as it is running in a subprocess. 
