@@ -6,11 +6,11 @@ import subprocess
 
 user = 'yangzhou'
 # the first host is the localhost
-hosts = list(map(lambda x: f'apt{x}.apt.emulab.net', [137, 141, 147]))
+hosts = list(map(lambda x: f'20.0.0.{x}', [1, 2, 3, 4]))
 
 Cmds = {
 	'sync': 'cd ~/ccKVS/bin && ./copy-ccKVS-executables.sh',
-	'run_local': 'cd ~/ccKVS/src/ccKVS && unbuffer ./run-ccKVS.sh &> log/{host}.log',
+	'run_local': 'cd ~/ccKVS/src/ccKVS && unbuffer ./run-ccKVS.sh &> ~/ccKVS/bin/log/{host}.log',
 	# &> just does not work
 	'run_remote': 'ssh -o StrictHostKeyChecking=no {user}@{host} "cd ~/ccKVS/src/ccKVS && unbuffer ./run-ccKVS.sh" > log/{host}.log 2> /dev/null',
     'kill': 'ssh -o StrictHostKeyChecking=no {user}@{host} "sudo pkill ccKVS"',
