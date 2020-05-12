@@ -25,7 +25,7 @@ def signal_handler(sig, frame):
 
 # non-blocking or blocking actually depends on whether cmd is bg or fg
 def blocking_run(cmd):
-    ret = subprocess.check_output(['/bin/bash', '-c', cmd])	
+	ret = subprocess.check_output(['/bin/bash', '-c', cmd])	
 	return ret
 
 # always non-blocking, as it is running in a subprocess. 
